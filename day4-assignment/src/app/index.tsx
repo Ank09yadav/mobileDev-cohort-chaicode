@@ -1,16 +1,31 @@
 import {
-  Text, View, StyleSheet, useColorScheme, KeyboardAvoidingView, Platform, Switch, TextInput, FlatList, Pressable, StatusBar, ImageBackground
+  Text, View, StyleSheet, useColorScheme, KeyboardAvoidingView, Platform, Switch, TextInput, FlatList, Pressable, StatusBar, ImageBackground, useWindowDimensions, Image
 } from "react-native";
 
 const headerBg = require("../../assets/images/ank-background.png");
+const phoneIcon = require("../../assets/images/phone.png");
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import MOCK_NOTES, { Note } from "./data"
+import * as ScreenOrientation from "expo-screen-orientation";
 import { useState } from "react";
 
 export default function Index() {
   const insets = useSafeAreaInsets();
+  const { width, height } = useWindowDimensions();
   const [isDark, setIsDark] = useState(useColorScheme() === 'dark');
+
+  const handleToggleOrientation = async () => {
+    const orientation = await ScreenOrientation.getOrientationAsync();
+    if (
+      orientation === ScreenOrientation.Orientation.PORTRAIT_UP ||
+      orientation === ScreenOrientation.Orientation.PORTRAIT_DOWN
+    ) {
+      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
+    } else {
+      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    }
+  };
 
   // for edit page 
   const [editpage, setEditPage] = useState(false);
@@ -32,7 +47,8 @@ export default function Index() {
     <Pressable
       style={({ pressed }) => [
         styles.noteCard,
-        { backgroundColor: isDark ? "#1e1e1e" : "#ffffff", opacity: pressed ? 0.9 : 1 }
+        { backgroundColor: isDark ? "#1e1e1e" : "#ffffff", opacity: pressed ? 0.9 : 1 },
+        width > 600 && { flex: 1, marginHorizontal: 8 }
       ]}
       //open edit page
       onPress={() => { 
@@ -138,6 +154,11 @@ export default function Index() {
             value={isDark}
             onValueChange={() => setIsDark(previousState => !previousState)}
           />
+          <Pressable style={{ marginLeft: 15 }} 
+            onPress={handleToggleOrientation}
+          >
+            <Image source={phoneIcon} style={{ width: 24, height: 24, tintColor: "#fff" }} />
+          </Pressable>
         </View>
       </ImageBackground>
 
@@ -150,8 +171,11 @@ export default function Index() {
         </View>
       ) : (
         <FlatList
+          key={width > 600 ? "columns-2" : "columns-1"}
           data={notes}
           renderItem={renderNoteCard}
+          numColumns={width > 600 ? 2 : 1}
+          columnWrapperStyle={width > 600 ? { justifyContent: "space-between" } : null}
           keyExtractor={(item) => item.id}
           contentContainerStyle={[
             styles.listContent,
