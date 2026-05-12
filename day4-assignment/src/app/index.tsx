@@ -14,6 +14,7 @@ export default function Index() {
   const insets = useSafeAreaInsets();
   const { width, height } = useWindowDimensions();
   const [isDark, setIsDark] = useState(useColorScheme() === 'dark');
+  const [filterText, setFilterText] = useState("");
 
   const handleToggleOrientation = async () => {
     const orientation = await ScreenOrientation.getOrientationAsync();
@@ -51,7 +52,7 @@ export default function Index() {
         width > 600 && { flex: 1, marginHorizontal: 8 }
       ]}
       //open edit page
-      onPress={() => { 
+      onPress={() => {
         setEditPage(true);
         setSelectedNoteId(item.id);
       }}
@@ -98,18 +99,18 @@ export default function Index() {
       <View style={styles.editPageHeaderCard}>
         <View style={styles.editPage}>
           <Text style={[styles.noteTitle, { color: isDark ? "#fff" : "#000" }]}>{item.title}</Text>
-          <Pressable 
+          <Pressable
             onPress={() => {
               setEditMode(!editMode);
               setEditPage(!editpage);
             }}
             style={[
-              styles.saveButton, 
+              styles.saveButton,
               { backgroundColor: isDark ? "#fff" : "#000" }
             ]}
           >
             <Text style={[
-              styles.saveButtonText, 
+              styles.saveButtonText,
               { color: isDark ? "#000" : "#fff" }
             ]}>
               Save
@@ -133,28 +134,38 @@ export default function Index() {
     </Pressable>
   );
 
+  // filter logic 
+  const filteredNotes = notes.filter((note) => {
+  const searchTerm = filterText.toLowerCase();
+  return (
+    note.title.toLowerCase().includes(searchTerm) ||
+    note.content.toLowerCase().includes(searchTerm)
+  );
+});
+
   return (
     <View style={[styles.mainContainer, { backgroundColor: isDark ? "#121212" : "#f5f7fa" }]}>
       <StatusBar barStyle={isDark ? "light-content" : "dark-content"} backgroundColor={isDark ? "#121212" : "#f5f7fa"} />
 
-      <ImageBackground 
-        source={headerBg} 
+      <ImageBackground
+        source={headerBg}
         style={headerStyle}
         resizeMode="cover"
         blurRadius={10}
       >
+
         <View style={styles.headerContent}>
           <View>
             <Text style={[styles.headerTitle, { color: "#fff" }]}>Your Notes</Text>
             <Text style={[styles.headerSubtitle, { color: "rgba(255,255,255,0.8)" }]}>Your personal space...</Text>
           </View>
           <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }} 
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
             thumbColor={isDark ? "#f5dd4b" : "#f4f3f4"}
             value={isDark}
             onValueChange={() => setIsDark(previousState => !previousState)}
           />
-          <Pressable style={{ marginLeft: 15 }} 
+          <Pressable style={{ marginLeft: 15 }}
             onPress={handleToggleOrientation}
           >
             <Image source={phoneIcon} style={{ width: 24, height: 24, tintColor: "#fff" }} />
@@ -162,7 +173,39 @@ export default function Index() {
         </View>
       </ImageBackground>
 
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          paddingHorizontal: 20,
+          marginTop: 10,
+        }}
 
+      >
+        <TextInput
+          style={{
+            flex: 1,
+            backgroundColor: isDark ? "#1e1e1e" : "#ffffff",
+            color: isDark ? "#ffffff" : "#333",
+            borderRadius: 20,
+          }}
+          value={filterText}
+          onChangeText={setFilterText}
+          placeholder="Search notes..."
+        ></TextInput>
+        <Pressable
+        >
+          <Text
+            style={{
+backgroundColor: isDark ? "#1e1e1e" : "#ffffff",
+            color: isDark ? "#ccc" : "#333",
+            borderRadius: 20,
+            paddingHorizontal: 16,
+            paddingVertical: 8,
+            }}
+          >Search</Text>
+        </Pressable>
+      </View>
 
 
       {editpage && selectedNoteId ? (
@@ -175,6 +218,7 @@ export default function Index() {
           data={notes}
           renderItem={renderNoteCard}
           numColumns={width > 600 ? 2 : 1}
+          data={filteredNotes}
           columnWrapperStyle={width > 600 ? { justifyContent: "space-between" } : null}
           keyExtractor={(item) => item.id}
           contentContainerStyle={[
