@@ -1,56 +1,86 @@
-# Welcome to your Expo app 👋
+# 📝 NoteStack - Advanced Personal Notes App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Welcome to **NoteStack**, a premium, feature-rich notes application built during **Day 4** of the Mobile Development Cohort. This app combines sleek aesthetics with powerful functionality, providing a seamless experience for managing your personal thoughts and tasks.
 
-## Get started
+---
 
-1. Install dependencies
+## ✨ Key Features
 
+- 🌓 **Dynamic Theme Switching**: Seamlessly toggle between Light and Dark modes with a smooth transition.
+- 📱 **Adaptive Layout**: Intelligent grid system that switches from 1 to 2 columns based on screen width (perfect for tablets and landscape mode).
+- 🔄 **Orientation Control**: Built-in toggle to force portrait or landscape orientation using `expo-screen-orientation`.
+- 🔍 **Real-time Search**: Instant filtering of notes based on title or content.
+- ✍️ **Live Editing**: High-performance editing mode with real-time state updates.
+- 🛡️ **Safe Area Aware**: Fully optimized for modern devices with notches and home indicators.
+- 🎨 **Premium UI**: Glassmorphism effects, custom background headers, and sophisticated typography.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [React Native](https://reactnative.dev/) with [Expo](https://expo.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Navigation**: Expo Router (File-based routing)
+- **Icons & Media**: Custom assets with `tintColor` support
+- **State Management**: React Hooks (`useState`, `useColorScheme`)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) and [Expo Go](https://expo.dev/go) installed.
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Ank09yadav/mobileDev-cohort-chaicode.git
+   ```
+
+2. **Navigate to the assignment directory**:
+   ```bash
+   cd day4-assignment
+   ```
+
+3. **Install dependencies**:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+4. **Start the development server**:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📸 Screenshots
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+| Light Mode | Dark Mode | Landscape Mode |
+| :---: | :---: | :---: |
+| ![Light Mode](https://via.placeholder.com/200x400?text=Light+Mode) | ![Dark Mode](https://via.placeholder.com/200x400?text=Dark+Mode) | ![Landscape](https://via.placeholder.com/400x200?text=Landscape+Mode) |
 
-## Get a fresh project
+> *Note: Add your actual screenshots here for a better presentation!*
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
-```
+## 🤝 Connect With Me
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Feel free to reach out for collaborations or just a friendly tech chat!
 
-### Other setup steps
+[![GitHub](https://img.shields.io/badge/GitHub-Ank09yadav-181717?style=for-the-badge&logo=github)](https://github.com/Ank09yadav)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Ankur%20Yadav-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/ank09yadav)
+[![X](https://img.shields.io/badge/X-ank09yadav-000000?style=for-the-badge&logo=x)](https://x.com/ank09yadav)
+[![YouTube](https://img.shields.io/badge/YouTube-ank09yadav-FF0000?style=for-the-badge&logo=youtube)](https://youtube.com/@ank09yadav)
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+---
 
-## Learn more
+## 📜 License
 
-To learn more about developing your project with Expo, look at the following resources:
+Distributed under the MIT License. See `LICENSE` for more information.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Developed with ❤️ by [Ankur Yadav](https://github.com/Ank09yadav)
