@@ -55,17 +55,7 @@ Make sure you have [Node.js](https://nodejs.org/) and [Expo Go](https://expo.dev
    npx expo start
    ```
 
----
 
-## 📸 Screenshots
-
-| Light Mode | Dark Mode | Landscape Mode |
-| :---: | :---: | :---: |
-| ![Light Mode](https://via.placeholder.com/200x400?text=Light+Mode) | ![Dark Mode](https://via.placeholder.com/200x400?text=Dark+Mode) | ![Landscape](https://via.placeholder.com/400x200?text=Landscape+Mode) |
-
-> *Note: Add your actual screenshots here for a better presentation!*
-
----
 
 ## 🤝 Connect With Me
 
@@ -76,12 +66,6 @@ Feel free to reach out for collaborations or just a friendly tech chat!
 [![X](https://img.shields.io/badge/X-ank09yadav-000000?style=for-the-badge&logo=x)](https://x.com/ank09yadav)
 [![YouTube](https://img.shields.io/badge/YouTube-ank09yadav-FF0000?style=for-the-badge&logo=youtube)](https://youtube.com/@ank09yadav)
 
----
 
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
 
 Developed with ❤️ by [Ankur Yadav](https://github.com/Ank09yadav)
