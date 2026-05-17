@@ -10,7 +10,7 @@ const HomeScreen = () => {
     <View>
       <Text>HomeScreen</Text>
       <Button onPress={()=>navigation.navigate("Details")}>go to Details Button</Button>
-      
+       <Button onPress={()=>navigation.push("Home")}>Push stack on Home</Button>
     </View>
   )
 }
